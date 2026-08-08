@@ -1,59 +1,61 @@
 # ✂️ Salon Appointment Scheduler (PostgreSQL + Bash CLI)
 
-Aplicación interactiva por línea de comandos (CLI) escrita en Bash y conectada a PostgreSQL para la gestión dinámica de clientes y agendamiento de citas en un salón de belleza.
+*🇪🇸 [Leer en español](README.es.md)*
+
+Interactive Command Line Interface (CLI) application written in Bash and connected to PostgreSQL for dynamic customer management and appointment scheduling in a beauty salon.
 
 ---
 
-## ⚡ Flujo de la Aplicación
+## ⚡ Application Flow
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Cliente
-    participant CLI as Script Bash (salon.sh)
+    actor Customer
+    participant CLI as Bash Script (salon.sh)
     participant DB as PostgreSQL (salon.sql)
 
-    Cliente->>CLI: Selecciona un servicio
-    CLI->>Cliente: Solicita número de teléfono
-    CLI->>DB: Consulta si el cliente existe
-    alt Cliente nuevo
-        DB-->>CLI: No encontrado
-        CLI->>Cliente: Solicita nombre
-        CLI->>DB: Registra nuevo cliente
-    else Cliente registrado
-        DB-->>CLI: Nombre encontrado
+    Customer->>CLI: Selects a service
+    CLI->>Customer: Requests phone number
+    CLI->>DB: Checks if customer exists
+    alt New Customer
+        DB-->>CLI: Not found
+        CLI->>Customer: Requests name
+        CLI->>DB: Registers new customer
+    else Registered Customer
+        DB-->>CLI: Name found
     end
-    CLI->>Cliente: Solicita hora de la cita
-    CLI->>DB: Registra la cita (appointments)
-    CLI->>Cliente: Muestra confirmación detallada
+    CLI->>Customer: Requests appointment time
+    CLI->>DB: Registers appointment (appointments)
+    CLI->>Customer: Shows detailed confirmation
 ```
 
 ---
 
-## ✨ Características Clave
-* **Interface de Consola Interactiva:** Menús dinámicos con manejo de errores e insumos inválidos mediante funciones recursivas en Bash.
-* **Flujo de Registro Inteligente:** Verificación de clientes existentes vía número telefónico para evitar registros duplicados.
-* **Persistencia Relacional:** Gestión de tablas para servicios (`services`), clientes (`customers`) y citas (`appointments`) con claves foráneas.
-* **Formateo de Datos:** Limpieza de espacios en blanco sobrantes devueltos por psql para presentar mensajes claros al usuario.
+## ✨ Key Features
+* **Interactive Console Interface:** Dynamic menus with error handling and invalid inputs through recursive functions in Bash.
+* **Smart Registration Flow:** Verification of existing customers via phone number to avoid duplicate records.
+* **Relational Persistence:** Table management for services (`services`), customers (`customers`), and appointments (`appointments`) with foreign keys.
+* **Data Formatting:** Trimming of trailing whitespaces returned by psql to present clear messages to the user.
 
-## 🛠️ Tecnologías Utilizadas
-* Base de Datos: PostgreSQL
-* Lenguaje: Bash / Shell Scripting (`psql` CLI)
+## 🛠️ Technologies Used
+* Database: PostgreSQL
+* Language: Bash / Shell Scripting (`psql` CLI)
 
-## 🚀 Instalación y Ejecución
-### Prerrequisitos
-Tener instalado y configurado PostgreSQL en tu entorno local.
-### Pasos
-1. **Clonar el repositorio:**
+## 🚀 Installation and Execution
+### Prerequisites
+Have PostgreSQL installed and configured in your local environment.
+### Steps
+1. **Clone the repository:**
 ```bash
   git clone https://github.com/Aki-new/salon-appointment-scheduler.git
   cd salon-appointment-scheduler
 ```
-2. **Crear e importar el esquema de la base de datos:**
+2. **Create and import the database schema:**
 ```bash
  psql -U postgres < salon.sql
 ```
-3. **Dar permisos de ejecución e iniciar la aplicación:**
+3. **Grant execution permissions and start the application:**
 ```bash
  chmod +x salon.sh
  ./salon.sh
@@ -61,7 +63,7 @@ Tener instalado y configurado PostgreSQL en tu entorno local.
 
 ---
 
-## 📜 Créditos y Reconocimientos
+## 📜 Credits and Acknowledgments
 
-* **Origen de la consigna / dataset:** Este proyecto es uno de los desafíos requeridos para la obtención de la **Certificación de Bases de Datos Relacionales** de [freeCodeCamp](https://www.freecodecamp.org/).
-* **Implementación:** La lógica de scripts en Bash (`salon.sh`) y la estructuración del esquema PostgreSQL (`salon.sql`) fueron desarrolladas por completo como resolución individual al problema planteado.
+* **Challenge / Dataset Origin:** This project is one of the challenges required to obtain the **Relational Database Certification** from [freeCodeCamp](https://www.freecodecamp.org/).
+* **Implementation:** The Bash scripting logic (`salon.sh`) and the structuring of the PostgreSQL schema (`salon.sql`) were developed entirely as an individual solution to the presented problem.
