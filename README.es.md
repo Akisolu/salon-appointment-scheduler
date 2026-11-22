@@ -1,5 +1,7 @@
 # ✂️ Salon Appointment Scheduler (PostgreSQL + Bash CLI)
 
+**Qué hace:** Una aplicación de terminal que reserva citas en un salón de belleza y reconoce a los clientes por teléfono, evitando registrar dos veces a la misma persona.  
+**Por qué importa:** La reserva manual generaba clientes duplicados y errores en las citas.
 *🇺🇸 [Read this in English](README.md)*
 
 Aplicación interactiva por línea de comandos (CLI) escrita en Bash y conectada a PostgreSQL para la gestión dinámica de clientes y agendamiento de citas en un salón de belleza.
@@ -48,7 +50,7 @@ Tener instalado y configurado PostgreSQL en tu entorno local.
 ### Pasos
 1. **Clonar el repositorio:**
 ```bash
-  git clone https://github.com/Aki-new/salon-appointment-scheduler.git
+  git clone https://github.com/Akisolu/salon-appointment-scheduler.git
   cd salon-appointment-scheduler
 ```
 2. **Crear e importar el esquema de la base de datos:**
